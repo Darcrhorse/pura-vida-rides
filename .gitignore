@@ -1,0 +1,33 @@
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Dependency directories
+node_modules/
+vendor/
+
+# Logs and databases
+*.log
+*.sqlite
+*.sql
+
+# Editor directories and files
+.idea/
+.vscode/
+.tssbuddy/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+/vendor
+/node_modules
+.env
+/docker-compose.override.yml

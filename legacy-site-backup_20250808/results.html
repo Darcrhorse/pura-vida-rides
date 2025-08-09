@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results - Pura Vida Rides</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Pura Vida Rides</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="index.html">Find a Ride</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="offer-ride.html">Offer a Ride</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="login.html">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="register.php">Register</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+    
+    <!-- Header Section -->
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <h1>Search Results</h1>
+                <p>Available rides matching your search criteria:</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Results Section -->
+    <div class="container">
+        <div class="row mt-4">
+            <!-- Ride Result Card -->
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="https://via.placeholder.com/350x150" class="card-img-top" alt="Ride Image">
+                    <div class="card-body">
+                        <h5 class="card-title">Ride 1</h5>
+                        <p class="card-text">Starting Location: San Jose</p>
+                        <p class="card-text">Destination: Tamarindo</p>
+                        <p class="card-text">Date: 2023-04-15</p>
+                        <p class="card-text">Vehicle Type: Car</p>
+                        <p class="card-text">Numberof Passengers: 3</p>
+                        <p class="card-text">Price: $35</p>
+                        <button id="detailsBtn1" class="btn btn-primary">View Details</button>
+                        </div>
+                        </div>
+                        </div>
+                        <!-- Ride Result Card -->
+                        <div class="col-md-4">
+                        <div class="card">
+                        <img src="https://via.placeholder.com/350x150" class="card-img-top" alt="Ride Image">
+                        <div class="card-body">
+                        <h5 class="card-title">Ride 2</h5>
+                        <p class="card-text">Starting Location: San Jose</p>
+                        <p class="card-text">Destination: Monteverde</p>
+                        <p class="card-text">Date: 2023-04-16</p>
+                        <p class="card-text">Vehicle Type: Van</p>
+                        <p class="card-text">Number of Passengers: 6</p>
+                        <p class="card-text">Price: $50</p>
+                        <button id="detailsBtn2" class="btn btn-primary">View Details</button>
+                        </div>
+                        </div>
+                        </div>
+                        <!-- Ride Result Card -->
+                        <div class="col-md-4">
+                        <div class="card">
+                        <img src="https://via.placeholder.com/350x150" class="card-img-top" alt="Ride Image">
+                        <div class="card-body">
+                        <h5 class="card-title">Ride 3</h5>
+                        <p class="card-text">Starting Location: San Jose</p>
+                        <p class="card-text">Destination: Arenal</p>
+                        <p class="card-text">Date: 2023-04-17</p>
+                        <p class="card-text">Vehicle Type: Bus</p>
+                        <p class="card-text">Number of Passengers: 30</p>
+                        <p class="card-text">Price: $40</p>
+                        <button id="detailsBtn3" class="btn btn-primary">View Details</button>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+    integrity="sha384-eMNCOe7tC1doHpGoJtKh7z7lGz7fuP4F8nfdFvAOA6Gg/z6Y5J6XqqyGXYM2ntX5"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+    <script>
+        document.getElementById("detailsBtn1").addEventListener("click", function() {
+            localStorage.setItem("selectedRide", "1");
+            window.location.href = "details.html";
+        });
+    
+        document.getElementById("detailsBtn2").addEventListener("click", function() {
+            localStorage.setItem("selectedRide", "2");
+            window.location.href = "details.html";
+        });
+    
+        document.getElementById("detailsBtn3").addEventListener("click", function() {
+            localStorage.setItem("selectedRide", "3");
+            window.location.href = "details.html";
+        });
+    </script>
+    
+
+</body>
+</html>

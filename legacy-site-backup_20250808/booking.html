@@ -1,0 +1,138 @@
+<!-- booking.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking - Pura Vida Rides</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Pura Vida Rides</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="index.html">Find a Ride</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="offer-ride.html">Offer a Ride</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="login.html">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="register.php">Register</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+    <!-- Booking Form -->
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <h1>Booking Details</h1>
+                <p>Please provide your details and the details of your passengers.</p>
+            </div>
+        </div>
+
+        <form id="bookingForm" class="needs-validation" novalidate>
+            <!-- Passenger Details -->
+<h2>Passenger Details</h2>
+<p>Please fill in the details for each passenger.</p>
+<!-- Passenger Details Form -->
+<form>
+    <!-- Passenger Information Repeater -->
+    <div id="passengerInfoRepeater">
+        <!-- Passenger Information -->
+        <div class="form-group">
+            <h4>Passenger 1</h4>
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label for="passengerName1">Full Name</label>
+                    <input type="text" class="form-control" id="passengerName1" placeholder="Enter full name">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="passengerID1">Identification Number (Passport, Cedula, etc.)</label>
+                    <input type="text" class="form-control" id="passengerID1" placeholder="Enter identification number">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label for="passengerPhone1">Phone Number</label>
+                    <input type="tel" class="form-control" id="passengerPhone1" placeholder="Enter phone number">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="passengerEmail1">Email</label>
+                    <input type="email" class="form-control" id="passengerEmail1" placeholder="Enter email">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label for="passengerStartCode1">Start Code</label>
+                    <input type="text" class="form-control" id="passengerStartCode1" placeholder="Enter start code">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="passengerEndCode1">End Code</label>
+                    <input type="text" class="form-control" id="passengerEndCode1" placeholder="Enter end code">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label for="passengerPaymentType1">Payment Type</label>
+                    <select class="form-control" id="passengerPaymentType1">
+                        <option value="card">Card</option>
+                        <option value="bank">Bank Transfer</option>
+                        <option value="sinpe">SINPE</option>
+                        <option value="paypal">PayPal</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Submit Button -->
+<button type="submit" class="btn btn-primary">Submit</button>
+
+
+    <!-- Footer -->
+<footer class="footer mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <p>&copy; 2023 Pura Vida Rides. All Rights Reserved.</p>
+                <ul class="list-inline">
+                    <li class="list-inline-item">
+                        <a href="#" class="text-muted">Privacy Policy</a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#" class="text-muted">Terms of Service</a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#" class="text-muted">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+    integrity="sha384-eMNCOe7tC1doHpGoJtKh7z7lGz7fuP4F8nfdFvAOA6Gg/z6Y5J6XqqyGXYM2ntX5"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+</body>
+</html>
