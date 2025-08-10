@@ -17,11 +17,12 @@ cmds = [
 ]
 
 [start]
-cmd = "php -S 0.0.0.0:$PORT router.php"
+cmd = "php -S 0.0.0.0:$PORT -t public/"
 
 [variables]
 APP_ENV = "production"
 APP_DEBUG = "false"
+APP_URL = "https://pura-vida-rides-production.up.railway.app"
 APP_KEY = "base64:q2Hze5dfTzap+gT74GvoVypFt8MQD+UAxUd3CHq0bDA="
 DB_CONNECTION = "sqlite"
 DB_DATABASE = "/app/database/database.sqlite"

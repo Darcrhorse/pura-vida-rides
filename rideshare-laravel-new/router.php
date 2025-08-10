@@ -5,7 +5,7 @@
  */
 
 $uri = urldecode(
-    parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)
+    parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) ?? ''
 );
 
 // Serve static assets from public directory
@@ -42,8 +42,11 @@ if ($uri !== '/' && file_exists(__DIR__.'/public'.$uri)) {
     
     // Serve the file
     readfile($file);
-    return;
+    return true;
 }
+
+// Change working directory to public for Laravel
+chdir(__DIR__.'/public');
 
 // Fallback to Laravel's index.php for all other requests
 require_once __DIR__.'/public/index.php';
