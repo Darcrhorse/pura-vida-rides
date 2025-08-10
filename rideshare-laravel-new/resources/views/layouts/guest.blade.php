@@ -15,22 +15,7 @@
         <link rel="preload" as="image" href="{{ asset('images/auth-illustration.jpg') }}">
 
         <!-- Scripts -->
-        @if(app()->environment('production'))
-            @php
-                $manifest = json_decode(file_get_contents(public_path('build/manifest.json')), true);
-                $cssFile = $manifest['resources/css/app.css']['file'] ?? 'assets/app.css';
-                $jsFile = $manifest['resources/js/app.js']['file'] ?? 'assets/app.js';
-                $imports = $manifest['resources/js/app.js']['imports'] ?? [];
-            @endphp
-            <link rel="stylesheet" href="{{ asset('build/' . $cssFile) }}">
-            <script type="module" src="{{ asset('build/' . $jsFile) }}"></script>
-            @foreach($imports as $import)
-                @php $importFile = $manifest[$import]['file'] ?? $import; @endphp
-                <script type="module" src="{{ asset('build/' . $importFile) }}"></script>
-            @endforeach
-        @else
-            @vite(['resources/css/app.css', 'resources/js/app.js'])
-        @endif
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans text-gray-900 antialiased">
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">

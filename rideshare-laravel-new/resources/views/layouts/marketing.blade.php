@@ -12,22 +12,8 @@
           imagesrcset="{{ asset('images/hero-index.jpg') }} 1920w, {{ asset('images/results-strip.jpg') }} 1280w"
           imagesizes="(min-width:1024px) 100vw, 100vw">
 
-    @if(app()->environment('production'))
-        @php
-            $manifest = json_decode(file_get_contents(public_path('build/manifest.json')), true);
-            $cssFile = $manifest['resources/css/app.css']['file'] ?? 'assets/app.css';
-            $jsFile = $manifest['resources/js/app.js']['file'] ?? 'assets/app.js';
-            $imports = $manifest['resources/js/app.js']['imports'] ?? [];
-        @endphp
-        <link rel="stylesheet" href="{{ asset('build/' . $cssFile) }}">
-        <script type="module" src="{{ asset('build/' . $jsFile) }}"></script>
-        @foreach($imports as $import)
-            @php $importFile = $manifest[$import]['file'] ?? $import; @endphp
-            <script type="module" src="{{ asset('build/' . $importFile) }}"></script>
-        @endforeach
-    @else
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    @endif
+    <!-- Scripts -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="min-h-screen flex flex-col bg-sand-50 font-body">
     <!-- Modern Navigation with Enhanced Sticky Header -->
@@ -42,7 +28,7 @@
                     </div>
                     <span class="ml-2 text-2xl group-hover:animate-bounce">🌴</span>
                 </a>
-                
+
                 <!-- Desktop Navigation -->
                 <nav class="hidden lg:flex items-center space-x-8">
                     <a href="{{ route('home') }}" class="font-medium text-sand-700 hover:text-caribbean-600 transition-colors duration-200 relative group">
@@ -67,7 +53,7 @@
                         <div class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-golden-500 to-volcano-500 group-hover:w-full transition-all duration-300"></div>
                     </a>
                 </nav>
-                
+
                 <!-- Auth Buttons -->
                 <div class="flex items-center space-x-4">
                     @auth
@@ -88,7 +74,7 @@
                             </a>
                         </div>
                     @endauth
-                    
+
                     <!-- Mobile Menu Button -->
                     <button class="lg:hidden p-2 text-sand-600 hover:text-caribbean-600 transition-colors duration-200" onclick="toggleMobileMenu()">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -97,7 +83,7 @@
                     </button>
                 </div>
             </div>
-            
+
             <!-- Mobile Menu -->
             <div id="mobile-menu" class="lg:hidden hidden mt-4 pb-4 border-t border-sand-200 pt-4">
                 <div class="flex flex-col space-y-3">
@@ -167,7 +153,7 @@
                         </a>
                     </div>
                 </div>
-                
+
                 <!-- Quick Links -->
                 <div>
                     <h3 class="font-display font-bold text-lg mb-4 text-white">Enlaces Rápidos</h3>
@@ -186,7 +172,7 @@
                         </a></li>
                     </ul>
                 </div>
-                
+
                 <!-- Support -->
                 <div>
                     <h3 class="font-display font-bold text-lg mb-4 text-white">Soporte</h3>
@@ -206,7 +192,7 @@
                     </ul>
                 </div>
             </div>
-            
+
             <!-- Bottom Bar -->
             <div class="border-t border-sand-700 pt-8 flex flex-col md:flex-row justify-between items-center">
                 <div class="text-sand-400 text-sm mb-4 md:mb-0">
@@ -232,15 +218,15 @@
         let lastScrollTop = 0;
         let scrollTimeout;
         const header = document.getElementById('main-header');
-        
+
         function handleScroll() {
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            
+
             // Clear existing timeout
             if (scrollTimeout) {
                 clearTimeout(scrollTimeout);
             }
-            
+
             // Debounce scroll events for performance
             scrollTimeout = setTimeout(() => {
                 if (scrollTop > lastScrollTop && scrollTop > 100) {
@@ -261,16 +247,16 @@
                 lastScrollTop = scrollTop;
             }, 10);
         }
-        
+
         // Add scroll listener with passive flag for better performance
         window.addEventListener('scroll', handleScroll, { passive: true });
-        
+
         // Intersection Observer for performance optimization
         const observerOptions = {
             rootMargin: '0px 0px -100px 0px',
             threshold: 0
         };
-        
+
         const headerObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (!entry.isIntersecting) {
@@ -279,7 +265,7 @@
                 }
             });
         }, observerOptions);
-        
+
         // Observe a sentinel element at the top of the page
         const sentinel = document.createElement('div');
         sentinel.style.height = '1px';
@@ -294,17 +280,17 @@
     <script>
     // Google Places Autocomplete with enhanced UX
     let autocompleteInstances = [];
-    
+
     function initAutocomplete() {
         const autocompleteOptions = {
             componentRestrictions: { country: ['cr'] },
             fields: ['geometry', 'name', 'formatted_address', 'place_id'],
             types: ['(cities)']
         };
-        
+
         // Find all autocomplete inputs
         const autocompleteInputs = document.querySelectorAll('input[name="from"], input[name="to"], .places-autocomplete');
-        
+
         autocompleteInputs.forEach(input => {
             if (input && !input.dataset.autocompleteInitialized) {
                 initializeAutocompleteForInput(input, autocompleteOptions);
@@ -312,21 +298,21 @@
             }
         });
     }
-    
+
     function initializeAutocompleteForInput(input, options) {
         // Add loading indicator
         addLoadingIndicator(input);
-        
+
         try {
             const autocomplete = new google.maps.places.Autocomplete(input, options);
             autocompleteInstances.push(autocomplete);
-            
+
             // Add event listeners
             autocomplete.addListener('place_changed', function() {
                 const place = autocomplete.getPlace();
                 handlePlaceSelection(input, place);
             });
-            
+
             // Add input event listeners for UX improvements
             input.addEventListener('input', function(e) {
                 if (e.target.value.length > 2) {
@@ -335,44 +321,44 @@
                     hideLoadingState(input);
                 }
             });
-            
+
             input.addEventListener('focus', function() {
                 input.select();
             });
-            
+
             // Remove loading indicator once initialized
             removeLoadingIndicator(input);
-            
+
         } catch (error) {
             console.error('Error initializing autocomplete for input:', error);
             removeLoadingIndicator(input);
             showErrorState(input);
         }
     }
-    
+
     function handlePlaceSelection(input, place) {
         hideLoadingState(input);
-        
+
         if (!place.geometry) {
             showErrorMessage(input, 'No se encontraron detalles para esta ubicación.');
             return;
         }
-        
+
         // Store place data
         input.dataset.placeId = place.place_id;
         input.dataset.lat = place.geometry.location.lat();
         input.dataset.lng = place.geometry.location.lng();
-        
+
         // Show success state
         showSuccessState(input);
-        
+
         // Auto-focus next field
         const nextInput = getNextInput(input);
         if (nextInput) {
             setTimeout(() => nextInput.focus(), 100);
         }
     }
-    
+
     function addLoadingIndicator(input) {
         const wrapper = input.closest('.relative') || input.parentNode;
         if (!wrapper.querySelector('.autocomplete-loading')) {
@@ -383,13 +369,13 @@
             wrapper.appendChild(loading);
         }
     }
-    
+
     function removeLoadingIndicator(input) {
         const wrapper = input.closest('.relative') || input.parentNode;
         const loading = wrapper.querySelector('.autocomplete-loading');
         if (loading) loading.remove();
     }
-    
+
     function showLoadingState(input) {
         input.classList.add('pr-10');
         const wrapper = input.closest('.relative') || input.parentNode;
@@ -401,17 +387,17 @@
             wrapper.appendChild(loading);
         }
     }
-    
+
     function hideLoadingState(input) {
         const wrapper = input.closest('.relative') || input.parentNode;
         const loading = wrapper.querySelector('.input-loading');
         if (loading) loading.remove();
     }
-    
+
     function showSuccessState(input) {
         input.classList.remove('border-red-500', 'border-gray-300');
         input.classList.add('border-green-500', 'bg-green-50');
-        
+
         const wrapper = input.closest('.relative') || input.parentNode;
         const existing = wrapper.querySelector('.input-success');
         if (!existing) {
@@ -422,16 +408,16 @@
             wrapper.appendChild(success);
         }
     }
-    
+
     function showErrorState(input) {
         input.classList.remove('border-green-500', 'border-gray-300');
         input.classList.add('border-red-500', 'bg-red-50');
         removeLoadingIndicator(input);
     }
-    
+
     function showErrorMessage(input, message) {
         showErrorState(input);
-        
+
         const wrapper = input.closest('.relative') || input.parentNode;
         let errorDiv = wrapper.querySelector('.autocomplete-error');
         if (!errorDiv) {
@@ -440,23 +426,23 @@
             wrapper.appendChild(errorDiv);
         }
         errorDiv.textContent = message;
-        
+
         setTimeout(() => {
             if (errorDiv) errorDiv.remove();
             input.classList.remove('border-red-500', 'bg-red-50');
             input.classList.add('border-gray-300');
         }, 3000);
     }
-    
+
     function getNextInput(currentInput) {
         const inputs = document.querySelectorAll('input[name="from"], input[name="to"], input[name="date"]');
         const currentIndex = Array.from(inputs).indexOf(currentInput);
         return inputs[currentIndex + 1];
     }
-    
+
     // Initialize autocomplete when Google Maps API is ready
     window.initAutocomplete = initAutocomplete;
-    
+
     // Fallback initialization for cases where callback doesn't fire
     document.addEventListener('DOMContentLoaded', function() {
         // Check if Google Maps API is already loaded

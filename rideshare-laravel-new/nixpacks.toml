@@ -1,10 +1,4 @@
-[phases.setup]
-nixPkgs = ["php82", "php82Packages.composer", "nodejs_20", "nginx"]
-
-[phases.install]
-cmds = [
-    "composer install --no-dev --optimize-autoloader"
-]
+providers = ["php", "node", "staticfile"]
 
 [phases.build]
 cmds = [
@@ -17,13 +11,12 @@ cmds = [
     "php artisan view:cache"
 ]
 
-[start]
-cmd = "php -S 0.0.0.0:$PORT -t public/"
-
 [variables]
 APP_ENV = "production"
 APP_DEBUG = "false"
 APP_URL = "https://pura-vida-rides-production.up.railway.app"
+ASSET_URL = "https://pura-vida-rides-production.up.railway.app"
+NIXPACKS_PHP_ROOT_DIR = "/app/public"
 APP_KEY = "base64:q2Hze5dfTzap+gT74GvoVypFt8MQD+UAxUd3CHq0bDA="
 DB_CONNECTION = "sqlite"
 DB_DATABASE = "/app/database/database.sqlite"
