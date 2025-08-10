@@ -8,11 +8,17 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $featuredTrips = Trip::with(['driver'])
-            ->where('depart_at', '>', now())
-            ->orderBy('depart_at')
-            ->take(6)
-            ->get();
+        // Handle database gracefully for deployment scenarios
+        try {
+            $featuredTrips = Trip::with(['driver'])
+                ->where('depart_at', '>', now())
+                ->orderBy('depart_at')
+                ->take(6)
+                ->get();
+        } catch (\Exception $e) {
+            // If database is not configured or no trips exist, use empty collection
+            $featuredTrips = collect([]);
+        }
 
         return view('home', [
             'featuredTrips' => $featuredTrips
