@@ -1,12 +1,20 @@
-providers = ["php", "node"]
+# Use only PHP provider to avoid conflicts
+providers = ["php"]
+
+[phases.setup]
+nixPkgs = ["php82", "nodejs_20", "npm"]
+
+[phases.install]
+cmds = [
+    "npm ci",
+    "npm run build"
+]
 
 [phases.build]
 cmds = [
-    "npm ci",
-    "npm run build",
     "php artisan migrate --force",
     "php artisan config:cache",
-    "php artisan route:cache",
+    "php artisan route:cache", 
     "php artisan view:clear",
     "php artisan view:cache"
 ]
