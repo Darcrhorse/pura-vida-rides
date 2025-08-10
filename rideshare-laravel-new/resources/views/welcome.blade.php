@@ -13,10 +13,18 @@
         <!-- Styles / Scripts -->
         @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
             @if(app()->environment('production'))
-                <link rel="stylesheet" href="{{ asset('build/assets/app-BWrdByhk.css') }}">
-                <script type="module" src="{{ asset('build/assets/app-CkOcBP1u.js') }}"></script>
-                <script type="module" src="{{ asset('build/assets/axios-wu1k_jD9.js') }}"></script>
-                <script type="module" src="{{ asset('build/assets/alpine-8kmaoRXL.js') }}"></script>
+                @php
+                    $manifest = json_decode(file_get_contents(public_path('build/manifest.json')), true);
+                    $cssFile = $manifest['resources/css/app.css']['file'] ?? 'assets/app.css';
+                    $jsFile = $manifest['resources/js/app.js']['file'] ?? 'assets/app.js';
+                    $imports = $manifest['resources/js/app.js']['imports'] ?? [];
+                @endphp
+                <link rel="stylesheet" href="{{ asset('build/' . $cssFile) }}">
+                <script type="module" src="{{ asset('build/' . $jsFile) }}"></script>
+                @foreach($imports as $import)
+                    @php $importFile = $manifest[$import]['file'] ?? $import; @endphp
+                    <script type="module" src="{{ asset('build/' . $importFile) }}"></script>
+                @endforeach
             @else
                 @vite(['resources/css/app.css', 'resources/js/app.js'])
             @endif
