@@ -15,7 +15,14 @@
         <link rel="preload" as="image" href="{{ asset('images/auth-illustration.jpg') }}">
 
         <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @if(app()->environment('production'))
+            <link rel="stylesheet" href="{{ asset('build/assets/app-BWrdByhk.css') }}">
+            <script type="module" src="{{ asset('build/assets/app-CkOcBP1u.js') }}"></script>
+            <script type="module" src="{{ asset('build/assets/axios-wu1k_jD9.js') }}"></script>
+            <script type="module" src="{{ asset('build/assets/alpine-8kmaoRXL.js') }}"></script>
+        @else
+            @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @endif
     </head>
     <body class="font-sans text-gray-900 antialiased">
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">

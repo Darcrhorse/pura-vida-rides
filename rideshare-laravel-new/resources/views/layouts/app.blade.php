@@ -17,7 +17,15 @@
               imagesizes="(min-width:1024px) 100vw, 100vw">
 
         <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <!-- Scripts -->
+        @if(app()->environment('production'))
+            <link rel="stylesheet" href="{{ asset('build/assets/app-BWrdByhk.css') }}">
+            <script type="module" src="{{ asset('build/assets/app-CkOcBP1u.js') }}"></script>
+            <script type="module" src="{{ asset('build/assets/axios-wu1k_jD9.js') }}"></script>
+            <script type="module" src="{{ asset('build/assets/alpine-8kmaoRXL.js') }}"></script>
+        @else
+            @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @endif
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">

@@ -12,7 +12,14 @@
           imagesrcset="{{ asset('images/hero-index.jpg') }} 1920w, {{ asset('images/results-strip.jpg') }} 1280w"
           imagesizes="(min-width:1024px) 100vw, 100vw">
 
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @if(app()->environment('production'))
+        <link rel="stylesheet" href="{{ asset('build/assets/app-BWrdByhk.css') }}">
+        <script type="module" src="{{ asset('build/assets/app-CkOcBP1u.js') }}"></script>
+        <script type="module" src="{{ asset('build/assets/axios-wu1k_jD9.js') }}"></script>
+        <script type="module" src="{{ asset('build/assets/alpine-8kmaoRXL.js') }}"></script>
+    @else
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @endif
 </head>
 <body class="min-h-screen flex flex-col bg-sand-50 font-body">
     <!-- Modern Navigation with Enhanced Sticky Header -->
