@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    html {
+        @apply scroll-smooth;
+        font-family: 'Outfit', 'Inter', sans-serif;
+    }
+    body {
+        @apply bg-sand-50 text-sand-900 antialiased font-body;
+    }
+    h1, h2, h3, h4, h5, h6 {
+        @apply font-display font-bold text-sand-900;
+    }
+    h1 {
+        @apply text-4xl lg:text-5xl;
+    }
+    h2 {
+        @apply text-3xl lg:text-4xl;
+    }
+    h3 {
+        @apply text-2xl lg:text-3xl;
+    }
+    h4 {
+        @apply text-xl lg:text-2xl;
+    }
+    a {
+        @apply text-caribbean-600 hover:text-caribbean-700 transition-colors duration-200;
+    }
+}
+
+@layer components {
+    /* Modern Button Styles with Better Touch Targets */
+    .btn-primary {
+        @apply bg-gradient-to-r from-caribbean-500 to-caribbean-600 hover:from-caribbean-600 hover:to-caribbean-700
+               text-white font-medium px-6 py-3 rounded-xl shadow-lg hover:shadow-xl
+               transform hover:scale-[1.02] transition-all duration-200
+               focus:outline-none focus:ring-4 focus:ring-caribbean-500/50
+               active:scale-[0.98] min-h-[44px] min-w-[44px];
+    }
+    
+    .btn-secondary {
+        @apply bg-gradient-to-r from-forest-500 to-forest-600 hover:from-forest-600 hover:to-forest-700
+               text-white font-medium px-6 py-3 rounded-xl shadow-lg hover:shadow-xl
+               transform hover:scale-[1.02] transition-all duration-200
+               focus:outline-none focus:ring-4 focus:ring-forest-500/50
+               active:scale-[0.98] min-h-[44px] min-w-[44px];
+    }
+    
+    .btn-accent {
+        @apply bg-gradient-to-r from-golden-500 to-volcano-500 hover:from-golden-600 hover:to-volcano-600
+               text-white font-medium px-6 py-3 rounded-xl shadow-lg hover:shadow-xl
+               transform hover:scale-[1.02] transition-all duration-200
+               focus:outline-none focus:ring-4 focus:ring-golden-500/50
+               active:scale-[0.98] min-h-[44px] min-w-[44px];
+    }
+
+    .btn-outline {
+        @apply border-2 border-caribbean-500 text-caribbean-600 hover:bg-caribbean-500 hover:text-white
+               font-medium px-6 py-3 rounded-xl transition-all duration-200
+               focus:outline-none focus:ring-4 focus:ring-caribbean-500/50
+               min-h-[44px] min-w-[44px];
+    }
+
+    /* Modern Card Styles */
+    .card {
+        @apply bg-white rounded-2xl shadow-card hover:shadow-card-hover transition-all duration-300;
+    }
+    
+    .card-glass {
+        @apply backdrop-blur-lg bg-white/10 border border-white/20 rounded-2xl;
+    }
+
+    /* Trip Card Specific Styles */
+    .trip-card {
+        @apply bg-white rounded-xl shadow-card hover:shadow-card-hover transition-all duration-300
+               border border-sand-200 hover:border-caribbean-200;
+    }
+
+    .trip-card:hover {
+        @apply shadow-2xl transform scale-[1.01];
+    }
+
+    .trip-card-header {
+        @apply flex justify-between items-start mb-4;
+    }
+
+    .trip-route {
+        @apply text-xl font-bold text-sand-900 mb-2;
+    }
+
+    .trip-price {
+        @apply text-3xl font-bold text-caribbean-600;
+    }
+
+    .driver-avatar {
+        @apply w-12 h-12 bg-gradient-to-br from-caribbean-400 to-caribbean-600
+               rounded-full flex items-center justify-center text-white font-bold;
+    }
+
+    /* Form Styles */
+    .form-input {
+        @apply border-sand-300 rounded-lg focus:ring-caribbean-500 focus:border-caribbean-500
+               transition-colors duration-200;
+    }
+
+    .form-label {
+        @apply block text-sm font-medium text-sand-900 mb-2;
+    }
+
+    /* Costa Rica-inspired gradients */
+    .gradient-caribbean {
+        @apply bg-gradient-to-br from-caribbean-600/80 to-caribbean-800/80;
+    }
+    
+    .gradient-forest {
+        @apply bg-gradient-to-br from-forest-600/80 to-forest-800/80;
+    }
+    
+    .gradient-sunset {
+        @apply bg-gradient-to-br from-golden-500/80 via-volcano-500/80 to-volcano-700/80;
+    }
+    
+    .gradient-paradise {
+        @apply bg-gradient-to-br from-caribbean-600/60 via-forest-600/40 to-volcano-600/60;
+    }
+
+    /* Text gradients */
+    .text-gradient-pura-vida {
+        @apply bg-gradient-to-r from-golden-400 to-volcano-400 bg-clip-text text-transparent;
+    }
+
+    /* Status badges */
+    .badge {
+        @apply px-3 py-1 rounded-full text-sm font-medium;
+    }
+
+    .badge-verified {
+        @apply bg-forest-100 text-forest-700;
+    }
+
+    .badge-price {
+        @apply bg-caribbean-100 text-caribbean-800;
+    }
+
+    .badge-seats {
+        @apply bg-golden-100 text-golden-800;
+    }
+
+    /* Mobile-specific improvements */
+    @media (max-width: 768px) {
+        .trip-card {
+            @apply mx-4 shadow-sm;
+        }
+        
+        .trip-card-header {
+            @apply flex-col items-start space-y-4;
+        }
+        
+        .trip-price {
+            @apply text-2xl;
+        }
+        
+        .btn-primary, .btn-secondary, .btn-accent {
+            @apply w-full justify-center py-4 text-base;
+        }
+        
+        .driver-avatar {
+            @apply w-10 h-10 text-sm;
+        }
+    }
+}
+
+@layer utilities {
+    /* Animations */
+    .animate-float {
+        animation: float 6s ease-in-out infinite;
+    }
+    
+    .animate-slide-up {
+        animation: slideUp 0.6s ease-out forwards;
+    }
+    
+    @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+    }
+    
+    @keyframes slideUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}
